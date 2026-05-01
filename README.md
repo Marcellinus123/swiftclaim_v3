@@ -58,7 +58,7 @@ Your server receives clean, structured JSON. You decide what to do with it credi
 
 > **Scenario: Mobile Data Reseller Portal**
 
-A typical mobile data selling site has agents and customers who top up their wallets before purchasing data bundles. While payment gateways like Paystack exist, their charges on large deposits can be significant — so many portal owners prefer to receive payments directly via MoMo.
+A typical mobile data selling site has agents and customers who top up their wallets before purchasing data bundles. While payment gateways like Paystack exist, their charges on large deposits can be significant so many portal owners prefer to receive payments directly via MoMo.
 
 **Here's where SwiftClaim comes in:**
 
@@ -541,20 +541,20 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 ##  Retry Behavior
 
 - If your webhook is unreachable or returns a non-`200` status, SwiftClaim marks the record as **failed** in local history
-- Failed entries are **not automatically retried** — this is intentional to prevent duplicate processing on your server
+- Failed entries are **not automatically retried** ,  this is intentional to prevent duplicate processing on your server
 - You can review failed entries in the **History** tab and **manually resend** them at any time
 
-> **Best Practice:** Build your webhook to be **idempotent** — processing the same `transaction_id` twice should have no harmful side effects. This protects you if a manual resend occurs.
+> **Best Practice:** Build your webhook to be **idempotent**  processing the same `transaction_id` twice should have no harmful side effects. This protects you if a manual resend occurs.
 
 ---
 
 ##  Security Tips
 
-- **Use a secret token** — Append a token to your webhook URL (`?token=abc123`) and validate it on every request. Reject any call that doesn't match.
-- **Validate `transaction_id`** — Always check if you've already processed this ID before taking action. Never credit the same payment twice.
-- **HTTPS only** — SwiftClaim will only POST to HTTPS endpoints. Never use plain HTTP.
-- **Respond with `200` quickly** — Do heavy processing (DB writes, email notifications) asynchronously. A slow response may cause the app to treat the delivery as failed.
-- **Log all incoming requests** — Keep a raw log of payloads so you can debug and replay if needed.
+- **Use a secret token** ; Append a token to your webhook URL (`?token=abc123`) and validate it on every request. Reject any call that doesn't match.
+- **Validate `transaction_id`**. Always check if you've already processed this ID before taking action. Never credit the same payment twice.
+- **HTTPS only** . SwiftClaim will only POST to HTTPS endpoints. Never use plain HTTP.
+- **Respond with `200` quickly** . Do heavy processing (DB writes, email notifications) asynchronously. A slow response may cause the app to treat the delivery as failed.
+- **Log all incoming requests** . Keep a raw log of payloads so you can debug and replay if needed.
 - **Never expose your webhook URL publicly** without a secret token. Anyone who knows the URL can POST fake payment data to your endpoint.
 
 ---
@@ -564,12 +564,12 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 ### V1 — Deprecated
 - Basic SMS reading capability
 - Required a paid API key to function
-- Manual trigger only — no automatic detection
+- Manual trigger only no automatic detection
 - High battery drain due to aggressive polling
 
 ### V2 — Legacy
-- Resolved battery drain — no longer aggressively polls
-- Removed payment requirement — free to use
+- Resolved battery drain  no longer aggressively polls
+- Removed payment requirement  free to use
 - Still manual trigger only
 - No persistent background service
 
