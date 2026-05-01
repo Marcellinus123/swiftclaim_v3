@@ -42,19 +42,19 @@
 
 ---
 
-## 📲 What is SwiftClaim?
+##  What is SwiftClaim?
 
 **SwiftClaim** is an Android app developed by **MarcBrain Ltd** that runs silently in the background and monitors your SMS inbox for mobile money (MoMo) payment notifications.
 
-When a matching payment SMS is detected — from MTN, Telecel, AirtelTigo, or any configured provider — the app extracts the transaction data and **HTTP POSTs it as structured JSON to your configured webhook URL**, in real time.
+When a matching payment SMS is detected from MTN, Telecel, AirtelTigo, or any configured provider , the app extracts the transaction data and **HTTP POSTs it as structured JSON to your configured webhook URL**, in real time.
 
 > No polling. No manual checks. SwiftClaim pushes data to your server the moment a matching SMS arrives.
 
-Your server receives clean, structured JSON. You decide what to do with it — credit a wallet, update a database, trigger a notification, mark an order as paid, and more.
+Your server receives clean, structured JSON. You decide what to do with it credit a wallet, update a database, trigger a notification, mark an order as paid, and more.
 
 ---
 
-## 🏪 Real-World Use Case
+##  Real-World Use Case
 
 > **Scenario: Mobile Data Reseller Portal**
 
@@ -80,7 +80,7 @@ The **reference field** in the MoMo SMS can carry an agent code or customer ID (
 
 ---
 
-## ⚙️ How It Works
+##  How It Works
 
 ```
 Phone receives SMS
@@ -94,7 +94,7 @@ POSTs JSON payload to your webhook URL
 Your server handles the business logic
 ```
 
-The app runs as a **persistent foreground service** — similar to how WhatsApp or Google Maps stays running in the background. It survives:
+The app runs as a **persistent foreground service** , similar to how WhatsApp or Google Maps stays running in the background. It survives:
 
 - App close
 - Screen off
@@ -102,24 +102,24 @@ The app runs as a **persistent foreground service** — similar to how WhatsApp 
 
 ---
 
-## ✅ Features
+##  Features
 
 | Feature | Details |
 |---|---|
-| 🔍 **Auto SMS Detection** | Detects payment SMS as they arrive, no manual action needed |
-| 🔁 **Auto-start on Boot** | App service restarts automatically after device reboot or power cycle |
-| 📡 **Real-time Webhook POST** | Sends structured JSON to your endpoint immediately on detection |
-| 📥 **Offline Queue** | When offline, detections are queued and forwarded once internet is restored |
-| 🔄 **Manual Resend** | Retry failed webhook deliveries from the History tab |
-| 🔔 **Persistent Notification** | Non-dismissible status bar notification confirms service is always active |
-| 🛡️ **Foreground + Background Service** | Stays alive in both foreground and background; user can stop it if needed |
-| 🧩 **Custom SMS Patterns** | Configure regex patterns to match any MoMo provider's SMS format |
-| 📋 **History Tab** | Review past detections and failed deliveries |
-| 🔐 **App Key Licensing** | Unique key per device; monthly or annual renewal |
+|  **Auto SMS Detection** | Detects payment SMS as they arrive, no manual action needed |
+|  **Auto-start on Boot** | App service restarts automatically after device reboot or power cycle |
+|  **Real-time Webhook POST** | Sends structured JSON to your endpoint immediately on detection |
+|  **Offline Queue** | When offline, detections are queued and forwarded once internet is restored |
+|  **Manual Resend** | Retry failed webhook deliveries from the History tab |
+|  **Persistent Notification** | Non-dismissible status bar notification confirms service is always active |
+|  **Foreground + Background Service** | Stays alive in both foreground and background; user can stop it if needed |
+|  **Custom SMS Patterns** | Configure regex patterns to match any MoMo provider's SMS format |
+|  **History Tab** | Review past detections and failed deliveries |
+|  **App Key Licensing** | Unique key per device; monthly or annual renewal |
 
 ---
 
-## 📦 Installation
+##  Installation
 
 1. **Download** the SwiftClaim V3 APK from your order confirmation email or the [SwiftClaim page](https://marcbrainltd.com/automations/swiftclaim).
 
@@ -164,7 +164,7 @@ SwiftClaim V3 requires a valid **App Key** before it can process any SMS.
 
 ---
 
-## 🔐 Permissions Required
+##  Permissions Required
 
 SwiftClaim requires the following permissions to function correctly:
 
@@ -182,7 +182,7 @@ SwiftClaim requires the following permissions to function correctly:
 
 ---
 
-## 🛠️ Configuration
+##  Configuration
 
 ### Webhook URL Setup
 
@@ -237,17 +237,17 @@ Payment received for GHS ([\d,.]+) from (.+?)\s{2,}Current Balance: GHS ([\d,.]+
 **Custom Pattern:**
 Go to **Settings → SMS Pattern**, clear the default regex, and paste your own. Ensure your regex uses the same 7 capture groups in the same order.
 
-> 💡 Test your regex at [regex101.com](https://regex101.com) using a real sample SMS before saving.
+>  Test your regex at [regex101.com](https://regex101.com) using a real sample SMS before saving.
 
 ---
 
-## 🔁 Foreground Service & Persistence
+##  Foreground Service & Persistence
 
 SwiftClaim V3 runs as a **persistent foreground service**:
 
 - A **permanent, non-dismissible notification** appears in the status bar confirming the service is active
 - The service **survives screen off, app close, and device reboot**
-- **No manual trigger is needed** — SMS are detected automatically as they arrive
+- **No manual trigger is needed** - SMS are detected automatically as they arrive
 - You can also perform a **manual scan** from the app's main screen at any time
 - The user can **stop the foreground/background service** from within the app if needed
 
@@ -255,7 +255,7 @@ SwiftClaim V3 runs as a **persistent foreground service**:
 
 ---
 
-## 📶 Offline & Queue Behavior
+##  Offline & Queue Behavior
 
 SwiftClaim handles network interruptions gracefully:
 
@@ -270,7 +270,7 @@ SwiftClaim handles network interruptions gracefully:
 
 ---
 
-## 📦 Webhook Payload Reference
+##  Webhook Payload Reference
 
 When a payment SMS is detected, SwiftClaim sends a `POST` request to your webhook URL with the following JSON body:
 
@@ -304,7 +304,7 @@ When a payment SMS is detected, SwiftClaim sends a `POST` request to your webhoo
 
 ---
 
-## 🔧 Webhook Integration Examples
+##  Webhook Integration Examples
 
 Your webhook must be a publicly accessible HTTPS endpoint that accepts `POST` requests with `Content-Type: application/json` and returns HTTP `200` on success.
 
@@ -538,7 +538,7 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 
 ---
 
-## 🔄 Retry Behavior
+##  Retry Behavior
 
 - If your webhook is unreachable or returns a non-`200` status, SwiftClaim marks the record as **failed** in local history
 - Failed entries are **not automatically retried** — this is intentional to prevent duplicate processing on your server
@@ -548,7 +548,7 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 
 ---
 
-## 🔒 Security Tips
+##  Security Tips
 
 - **Use a secret token** — Append a token to your webhook URL (`?token=abc123`) and validate it on every request. Reject any call that doesn't match.
 - **Validate `transaction_id`** — Always check if you've already processed this ID before taking action. Never credit the same payment twice.
@@ -559,7 +559,7 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 
 ---
 
-## 📋 Version History
+##  Version History
 
 ### V1 — Deprecated
 - Basic SMS reading capability
@@ -582,18 +582,18 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 
 ---
 
-## 📞 Support & Contact
+##  Support & Contact
 
 Built and maintained by **MarcBrain Ltd**.
 
 | Channel | Details |
 |---|---|
-| 📧 Email | [info@marcbrainltd.com](mailto:info@marcbrainltd.com) |
-| 📞 Phone | [+233 2487 70024](tel:+233248770024) |
-| 🌐 Website | [marcbrainltd.com](https://marcbrainltd.com) |
-| 💬 Contact Form | [marcbrainltd.com/contact](https://marcbrainltd.com/contact) |
-| 📄 Full Docs | [SwiftClaim Documentation](https://marcbrainltd.com/automations/swiftclaim/documentation) |
-| 🔖 Changelog | [Version History](https://marcbrainltd.com/automations/swiftclaim/changelog) |
+|  Email | [info@marcbrainltd.com](mailto:info@marcbrainltd.com) |
+|  Phone | [+233 2487 70024](tel:+233248770024) |
+|  Website | [marcbrainltd.com](https://marcbrainltd.com) |
+|  Contact Form | [marcbrainltd.com/contact](https://marcbrainltd.com/contact) |
+|  Full Docs | [SwiftClaim Documentation](https://marcbrainltd.com/automations/swiftclaim/documentation) |
+|  Changelog | [Version History](https://marcbrainltd.com/automations/swiftclaim/changelog) |
 
 > For App Key purchase, renewal, or device unbinding requests, reach out via email or phone above.
 
