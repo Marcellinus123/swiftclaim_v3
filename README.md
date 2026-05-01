@@ -561,19 +561,19 @@ function swiftclaim_handle_webhook(WP_REST_Request $request) {
 
 ##  Version History
 
-### V1 — Deprecated
+### V1 - Deprecated
 - Basic SMS reading capability
 - Required a paid API key to function
 - Manual trigger only no automatic detection
 - High battery drain due to aggressive polling
 
-### V2 — Legacy
+### V2 - Legacy
 - Resolved battery drain  no longer aggressively polls
 - Removed payment requirement  free to use
 - Still manual trigger only
 - No persistent background service
 
-### V3 — Current ✅
+### V3 - Current ✅
 - Supports both **manual triggers** and **automatic foreground/background running**
 - Persistent non-dismissible notification confirms the service is always active
 - Survives app close, screen off, and device reboot
