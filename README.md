@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://marcbrainltd.com/automations/swiftclaim/images/applogo.png" width="70" alt="SwiftClaim Banner" style="border-radius:10px;" />
+  <img src="https://marcbrainltd.com/automations/swiftclaim/images/applogo.png" width="60%" alt="SwiftClaim Banner" style="border-radius:10px;" />
 </p>
 
 <h1 align="center">SwiftClaim V3</h1>
